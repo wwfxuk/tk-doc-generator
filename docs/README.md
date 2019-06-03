@@ -10,8 +10,8 @@ The following folders exist:
 - `ko` - Korean translated content.
 - `zh_CN` - Chinese translated content.
 - `images` - All images should be located in the images subfolder structure.
-- `_data/en`, `_data/ja`, ... - Site metadata (e.g. landing page content), organized by language. 
+- `_data/en`, `_data/ja`, ... - Site metadata (e.g. landing page content), organized by language.
 
 ## Content authoring guide
 
-For more information, see the [content authoring guide](https://developer.shotgunsoftware.com/tk-doc-generator/authoring/).
+For more information, see the [content authoring guide](https://wwfxuk.github.io/tk-doc-generator/authoring/).

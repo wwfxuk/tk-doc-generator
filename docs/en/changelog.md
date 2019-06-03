@@ -12,6 +12,16 @@ See also the [GitHub Releases page][releases]
 
 [releases]: https://github.com/wwfxuk/tk-doc-generator/releases
 
+# v1.0.0+wwfx.0.2.0
+
+- Changed all/most docs links to WWFX UK versions.
+- Altered shield badges to use `docs` label:
+    [![Doc Generator](https://img.shields.io/badge/docs-WWFX%20SG%20Doc%20Generator-blue.svg)](http://github.com/wwfxuk/tk-doc-generator)
+
+    ```
+    [![Doc Generator](https://img.shields.io/badge/docs-WWFX%20SG%20Doc%20Generator-blue.svg)](http://github.com/wwfxuk/tk-doc-generator)
+    ```
+
 # v1.0.0+wwfx.0.1.0
 
 Added this change log as well as minor fixes:
