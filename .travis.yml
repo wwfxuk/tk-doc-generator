@@ -12,10 +12,8 @@ python:
 
 env:
   global:
-    - DOC_URL=https://developer.shotgunsoftware.com
+    - DOC_URL=https://wwfxuk.github.io
     - DOC_PATH=/tk-doc-generator
-    - S3_BUCKET=sg-devdocs
-    - S3_WEB_URL=http://sg-devdocs.s3-website-us-east-1.amazonaws.com
 
 cache:
   pip: true
@@ -45,7 +43,7 @@ script:
   - python ./travis-generate-docs.py
 
 deploy:
-  # When commiting to master, auto-deploy to github-pages
+  # When committing to master, auto-deploy to github-pages
   # This will copy the contents of the _build folder to gh-pages branch and push
 - provider: pages
   local-dir: ./_build
