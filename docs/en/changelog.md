@@ -5,14 +5,40 @@ pagename: changelog
 lang: en
 ---
 
-Change Log/History
-------------------
+# Change Log/History
 
 See also the [GitHub Releases page][releases]
 
 [releases]: https://github.com/wwfxuk/tk-doc-generator/releases
 
-# v1.0.0+wwfx.0.4.0
+## v1.0.0+wwfx.1.0.0
+
+Updated documentation on how to use this documentation tool.
+
+- Fixed broken links
+- Fixed incorrect `.travis.yml` example
+- Added step by step walk-through "Getting started" page
+
+
+## v1.0.0+wwfx.0.4.1
+
+Fixed docs auto-regenerate as `--detach` actually disabled auto-regenerate.
+Re-written preview docs generations to fix this.
+
+- `serve_docs.sh`:
+    - Directly generating from `$SOURCE` rather than symlink and using
+      `$TMP_BUILD_FOLDER`
+    - Using `localhost` address to fix IP address switching when browsing
+    - No longer using `--detach`
+    - More info output during setup
+- `preview_docs.sh`:
+    - Moved "Documentation built" instruction back into here
+    - Switched to `while true` from `until`
+- `Dockerfile`:
+    - `_doc_generator_tmp/markdown_src` gets created here instead of in
+    `serve_docs.sh`
+
+## v1.0.0+wwfx.0.4.0
 
 Upgraded `preview_docs.sh` to enable **live** local preview on refresh.
 
@@ -20,7 +46,7 @@ Upgraded `preview_docs.sh` to enable **live** local preview on refresh.
 - `preview_docs.sh` can now take in explicit `URL_PATH` arg
 - `build_docs.sh` now uses `--plugins` instead of copying `_plugins` folder, minor echo tidy
 
-# v1.0.0+wwfx.0.3.1
+## v1.0.0+wwfx.0.3.1
 
 Minor fixes:
 
@@ -28,7 +54,7 @@ Minor fixes:
 - `get-tk-core-packages.sh`: Syntax error related to extra `-o` in if statement
 - `preview_docs.sh`: Can now be run anywhere, including within `tk-doc-generator`
 
-# v1.0.0+wwfx.0.3.0
+## v1.0.0+wwfx.0.3.0
 
 Functional improvements and fixes from testing
 `tk-doc-generator` (locally using `preview_docs.sh` and on `travis.ci`)
@@ -54,7 +80,7 @@ branch/PR. See also `tk-katana`'s
 - `Gemfile*`: Using WWFX `just-the-docs` with
   [new external links test](https://github.com/shotgunsoftware/just-the-docs/pull/9)
 
-# v1.0.0+wwfx.0.2.0
+## v1.0.0+wwfx.0.2.0
 
 - Changed all/most docs links to WWFX UK versions.
 - Altered shield badges to use `docs` label:
@@ -64,7 +90,7 @@ branch/PR. See also `tk-katana`'s
     [![Doc Generator](https://img.shields.io/badge/docs-WWFX%20SG%20Doc%20Generator-blue.svg)](http://github.com/wwfxuk/tk-doc-generator)
     ```
 
-# v1.0.0+wwfx.0.1.0
+## v1.0.0+wwfx.0.1.0
 
 Added this change log as well as minor fixes:
 
@@ -73,6 +99,6 @@ Added this change log as well as minor fixes:
 - `build_docs.sh`: Fixed permissions of generated docs from just `root` only
 - `travis-generate-docs.py`: Fallback to `DOC_*` before using dummy URL.
 
-# v1.0.0
+## v1.0.0
 
 Initial release from Shotgun, nothing mentioned by Shotgun.
