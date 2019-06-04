@@ -9,7 +9,7 @@
 # Main Documentation build script
 # Syntax:
 #
-# build_docs --url=TARGET_URL           # url where the docs will live, e..g https://mysite.com
+# serve_docs --url=TARGET_URL           # url where the docs will live, e..g https://mysite.com
 #            --url-path=TARGET_PATH     # target path on doc site, e.g. /developer_docs
 #            --source=SOURCE_FOLDER     # source location
 #            --output=OUTPUT_FOLDER     # build target. This folder will be deleted by the script.
@@ -70,12 +70,13 @@ echo "Cleaning out final build location '${OUTPUT}'..."
 rm -rf ${OUTPUT}
 
 echo "Creating build location '${TMP_BUILD_FOLDER}'..."
-mkdir -p ${TMP_BUILD_FOLDER}/_plugins
+mkdir -p ${TMP_BUILD_FOLDER}
 
-echo "Copying source files into '${TMP_BUILD_FOLDER}'..."
+echo "Copying source files into '${TMP_FOLDER}'..."
 cp -r ${SOURCE}/* ${TMP_BUILD_FOLDER}
 
-echo "Copying plugins into '${TMP_BUILD_FOLDER}/_plugins'..."
+echo "Copying plugins into '${TMP_FOLDER}/_plugins'..."
+mkdir -p ${TMP_BUILD_FOLDER}/_plugins
 cp -nr ${TK_DOC_GEN_SRC}/jekyll/_plugins/* ${TMP_BUILD_FOLDER}/_plugins
 
 echo "Running Sphinx RST -> Markdown build process..."
@@ -93,8 +94,11 @@ then
 fi
 
 BUNDLE_GEMFILE=${TK_DOC_GEN_SRC}/Gemfile JEKYLL_ENV=production \
-    bundle exec jekyll build \
-    --baseurl "${URLPATH}" --config "${CONFIGS}" \
+bundle exec jekyll serve \
+    --baseurl "${URLPATH}" \
+    --host 0.0.0.0 --port 4000 \
+    --trace --verbose \
+    --config "${CONFIGS}" \
     --source "${TMP_BUILD_FOLDER}" --destination "${OUTPUT}"
 
 # Local preview_docs.sh (Docker): allow non-root users to modify generated docs

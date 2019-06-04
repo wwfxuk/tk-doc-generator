@@ -12,6 +12,14 @@ See also the [GitHub Releases page][releases]
 
 [releases]: https://github.com/wwfxuk/tk-doc-generator/releases
 
+# v1.0.0+wwfx.0.3.1
+
+Minor fixes:
+
+- `build_docs.sh`: Inaccurate echo statements
+- `get-tk-core-packages.sh`: Syntax error related to extra `-o` in if statement
+- `preview_docs.sh`: Can now be run anywhere, including within `tk-doc-generator`
+
 # v1.0.0+wwfx.0.3.0
 
 Functional improvements and fixes from testing
