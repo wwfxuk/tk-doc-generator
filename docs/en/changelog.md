@@ -12,6 +12,14 @@ See also the [GitHub Releases page][releases]
 
 [releases]: https://github.com/wwfxuk/tk-doc-generator/releases
 
+# v1.0.0+wwfx.0.4.0
+
+Upgraded `preview_docs.sh` to enable **live** local preview on refresh.
+
+- Switched to use new `serve_docs.sh`
+- `preview_docs.sh` can now take in explicit `URL_PATH` arg
+- `build_docs.sh` now uses `--plugins` instead of copying `_plugins` folder, minor echo tidy
+
 # v1.0.0+wwfx.0.3.1
 
 Minor fixes:

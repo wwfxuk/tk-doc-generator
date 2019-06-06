@@ -82,4 +82,4 @@ ENV PATH=${PATH}:/usr/local/src/scripts
 RUN get-tk-core-packages.sh /usr/local/lib64/python
 ENV PYTHONPATH=${PYTHONPATH}:/usr/local/lib64/python
 
-ENTRYPOINT [ "build_docs.sh" ]
+ENTRYPOINT [ "serve_docs.sh" ]

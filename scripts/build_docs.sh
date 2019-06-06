@@ -75,27 +75,36 @@ mkdir -p ${TMP_BUILD_FOLDER}/_plugins
 echo "Copying source files into '${TMP_BUILD_FOLDER}'..."
 cp -r ${SOURCE}/* ${TMP_BUILD_FOLDER}
 
-echo "Copying plugins into '${TMP_BUILD_FOLDER}/_plugins'..."
-cp -nr ${TK_DOC_GEN_SRC}/jekyll/_plugins/* ${TMP_BUILD_FOLDER}/_plugins
-
 echo "Running Sphinx RST -> Markdown build process..."
 python ${THIS_DIR}/build_sphinx.py ${TMP_BUILD_FOLDER}
 
-echo "Running Jekyll to generate html from markdown..."
-CONFIGS="${TK_DOC_GEN_SRC}/jekyll/_config.yml"
+# Setup additional plugins paths
+PLUGINS="${TK_DOC_GEN_SRC}/jekyll/_plugins"
+EXTRA_PLUGIN=${TMP_BUILD_FOLDER}/_plugins
+if [ -d "${EXTRA_PLUGIN}" ]
+then
+    echo "Using additional plugins from ${EXTRA_PLUGIN}..."
+    PLUGINS="${PLUGINS},${EXTRA_PLUGIN}"
+fi
 
-# see if an external override config file exists
+# Setup additional config overrides
+CONFIGS="${TK_DOC_GEN_SRC}/jekyll/_config.yml"
 OVERRIDE_CONFIG=${OUR_REPO_ROOT}/jekyll_config.yml
 if [ -e "${OVERRIDE_CONFIG}" ]
 then
-    echo "using override config from ${OVERRIDE_CONFIG}..."
+    echo "Using override config from ${OVERRIDE_CONFIG}..."
     CONFIGS="${CONFIGS},${OVERRIDE_CONFIG}"
 fi
 
+echo "Running Jekyll to generate html from markdown..."
+echo
 BUNDLE_GEMFILE=${TK_DOC_GEN_SRC}/Gemfile JEKYLL_ENV=production \
     bundle exec jekyll build \
-    --baseurl "${URLPATH}" --config "${CONFIGS}" \
-    --source "${TMP_BUILD_FOLDER}" --destination "${OUTPUT}"
+    --baseurl "${URLPATH}" \
+    --config "${CONFIGS}" \
+    --plugins "${PLUGINS}" \
+    --source "${TMP_BUILD_FOLDER}" \
+    --destination "${OUTPUT}"
 
 # Local preview_docs.sh (Docker): allow non-root users to modify generated docs
 chmod -R 'a+rwX' "${OUTPUT}"
