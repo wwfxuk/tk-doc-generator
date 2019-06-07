@@ -143,9 +143,15 @@ else
     done
     CONTAINER_NAME=$(docker ps -f id=${CONTAINER_ID} --format '{{.Names}}')
 fi
-echo "Waiting for container to startup: ${CONTAINER_NAME}"
-echo
-echo
+cat << EOF
+
+###############################################################################
+
+
+Container initilaised! Waiting for it to startup...
+
+
+EOF
 
 # To prevent error in "docker logs" writing out blank logs file
 # we use a buffer file so: docker logs -> buffer -> log file
@@ -164,15 +170,16 @@ cat ${TMP_LOG}
 
 # Output "Open in web-browser" if the serve script actually succeeded
 docker inspect ${CONTAINER_ID} &> /dev/null && cat << EOF
+
 ###############################################################################
 
-      Documentation built. Open in web-browser:
+            Documentation built!
 
-  http://localhost:${EXPOSED_PORT}/${URL_PATH}${URL_PATH:+/}
+Open in web-browser: http://localhost:${EXPOSED_PORT}/${URL_PATH}${URL_PATH:+/}
 
-         VIEW logs: docker logs -f ${CONTAINER_NAME}
-CONVERT sphinx rst: docker exec ${CONTAINER_NAME} build_sphinx.py ${MOUNT_TO}/docs
-  CHECK if running: docker ps --filter name=${CONTAINER_NAME}
-    STOP container: docker stop ${CONTAINER_NAME}
-
+          VIEW logs: docker logs -f ${CONTAINER_NAME}
+ CONVERT sphinx rst: docker exec ${CONTAINER_NAME} build_sphinx.py ${MOUNT_TO}/docs
+   CHECK if running: docker ps --filter name=${CONTAINER_NAME}
+     STOP container: docker stop ${CONTAINER_NAME}
+          ...or ALL: docker stop \$(docker ps -q -f "ancestor=${IMAGE_TAG}")
 EOF
