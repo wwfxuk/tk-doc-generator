@@ -1,2 +1,16 @@
+#
+# jekyll configuration file for Shotgun Developer Site Environment
+#
+# For more information, see https://developer.shotgunsoftware.com/tk-doc-generator/
+
+# Site settings
 title: tk-doc-generator
 description: Shotgun Developer Doc Generation.
+
+# i18n configuration for all languages shotgun supports
+languages: ["en"]
+lang_vars: ["English"]
+default_lang: "en"
+
+# the url to connect to via the 'edit in github' button
+github_editme_path: wwfxuk/tk-doc-generator/tree/docs-for-docs/docs
