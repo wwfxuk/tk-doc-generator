@@ -102,7 +102,8 @@ The following travis file illustrates how to integrate:
 ```yaml
 language: python
 
-global:
+env:
+  global:
     - DOC_URL=https://developer.shotgunsoftware.com
     - DOC_PATH=/tk-doc-generator
     - S3_BUCKET=my-preview-bucket
