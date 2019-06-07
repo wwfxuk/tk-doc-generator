@@ -13,8 +13,8 @@ content: This repository makes it easy to generate developer documentation for S
 tiles:
 - name: integrating
   image: ./images/landing-page/dev_icon.png
-  target: ./integrating
+  page: installation-integrating
 
 - name: authoring
   image: ./images/landing-page/book_icon.png
-  target: ./authoring
+  page: authoring
