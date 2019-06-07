@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/wwfxuk/just-the-docs.git
-  revision: e4d057a8a5f057c6aab101071ef7009e10d4c9e9
+  revision: 84080fbc9ed6f01fa9829dee7e264d6c2dd3d37e
   specs:
     just-the-docs (0.2.1)
       jekyll (~> 3.8.5)
