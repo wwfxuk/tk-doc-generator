@@ -1,5 +1,5 @@
 [![Doc Generator](https://img.shields.io/badge/docs-WWFX%20SG%20Doc%20Generator-blue.svg)](http://github.com/wwfxuk/tk-doc-generator)
-[![Build Status](https://secure.travis-ci.org/wwfxuk/tk-doc-generator.svg?branch=master)](http://travis-ci.org/wwfxuk/tk-doc-generator)
+[![Build Status](https://travis-ci.com/wwfxuk/tk-doc-generator.svg?branch=master)](https://travis-ci.com/wwfxuk/tk-doc-generator)
 [![Linting](https://img.shields.io/badge/PEP8%20by-Hound%20CI-a873d1.svg)](https://houndci.com)
 
 # Shotgun/Toolkit Documentation Generator
