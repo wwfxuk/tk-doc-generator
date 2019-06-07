@@ -52,4 +52,4 @@ deploy:
   github-token: $GITHUB_TOKEN
   on:
     # only do this when on the master branch
-    branch: master
+    branch: docs-for-docs
